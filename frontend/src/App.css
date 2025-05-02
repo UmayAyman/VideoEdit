@@ -1,0 +1,592 @@
+/* === Global Reset & Base Styles === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif; /* Cleaner font stack */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa; /* Lighter grey background */
+  color: #495057; /* Dark grey text */
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300; /* Apply light weight globally */
+}
+
+/* === Layout Structure === */
+.app-root { 
+    /* Styles for the absolute root if needed */
+}
+
+.app-container { /* This now primarily controls the main content width */
+  max-width: 1200px; 
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px; 
+}
+
+.app-header {
+  background-color: #ffffff; 
+  padding: 25px 0; /* Vertical padding only */
+  border-bottom: 1px solid #dee2e6; 
+  margin-bottom: 35px; 
+  /* Remove text-align: center; It will be centered by the inner .app-container */
+}
+
+/* Ensure the container within the header doesn't add extra padding */
+.app-header .app-container {
+    padding: 0 15px; /* Match horizontal padding of main container */
+    text-align: center; /* Center the heading within the constrained width */
+}
+
+.main-heading {
+  color: #2c3e50; 
+  font-size: 2.2em; 
+  font-weight: 300; 
+  margin: 0; 
+  border-bottom: none; 
+  letter-spacing: 1px; 
+  text-transform: uppercase; 
+}
+
+.app-main-content {
+  background-color: #ffffff; 
+  padding: 30px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); 
+  margin-bottom: 30px;
+  /* Remove margin-top if it was added previously, spacing handled by header margin */
+}
+
+.app-footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid #dee2e6;
+  font-size: 0.9em;
+  color: #6c757d; /* Lighter grey footer text */
+}
+
+/* === Components & Controls === */
+
+.template-selection-area {
+  gap: 15px;
+  flex-wrap: wrap;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Style for the TemplateSelector component (assuming it has a wrapper or identifiable element) */
+/* If TemplateSelector renders a div wrapper, target that. If not, target its select/label directly */
+.template-selector-container {
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+/* Reduce size and add margin-top to the specific Create New button */
+.button.button-create-new {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.loading-message,
+.placeholder-text {
+  font-style: italic;
+  color: #6c757d;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.editing-section h2 {
+  font-size: 1.5em;
+  color: #343a40;
+  margin-top: 0;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* --- Inputs & Forms --- */
+.top-level-inputs {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #ced4da;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input-group label {
+  margin-right: 10px;
+  width: 100px; /* Slightly wider labels */
+  display: inline-block;
+  font-weight: 500;
+  color: #495057;
+  flex-shrink: 0;
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"],
+.input-group input[type="file"],
+.input-group select,
+.input-group textarea {
+  padding: 8px 12px; /* More padding */
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.95em;
+  flex-grow: 1; /* Allow inputs to grow */
+  min-width: 150px;
+}
+
+.input-group input[type="checkbox"] {
+  margin-left: 5px;
+}
+
+/* Specific styling for file input display */
+.input-group input[type="file"] {
+  border: none;
+  padding-left: 0;
+}
+
+.input-group span { /* For file upload status/info */
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+/* Forms (Add/Edit) */
+.form-container {
+  border: 1px solid #dee2e6;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  background-color: #fdfdff; /* Very light blue/white */
+}
+
+.form-container h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #007bff; /* Blue heading for forms */
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+/* --- Buttons --- */
+.button-group { /* Container for related buttons */
+    margin: 15px 0 25px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.main-action-buttons { /* Specific group for Save/Add/Generate */
+    margin: 20px 0 30px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.button {
+  padding: 9px 18px; /* Slightly adjusted padding */
+  font-size: 0.95em; /* Slightly smaller base font */
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent; /* Base border */
+  margin: 0; /* Remove default margin */
+  transition: all 0.2s ease;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Primary (Blue - e.g., Add Scene) */
+.button-primary {
+  background-color: #0d6efd; /* Bootstrap blue */
+  border-color: #0d6efd;
+  color: white;
+}
+.button-primary:hover:not(:disabled) {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* Secondary (Grey - e.g., Create New, Generate JSON, Cancel) */
+.button-secondary {
+  background-color: #6c757d; /* Bootstrap grey */
+  border-color: #6c757d;
+  color: white;
+}
+.button-secondary:hover:not(:disabled) {
+  background-color: #5c636a;
+  border-color: #565e64;
+}
+
+/* Save/Update (Green) */
+.button-save {
+    background-color: #198754; /* Bootstrap green */
+    border-color: #198754;
+    color: white;
+}
+.button-save:hover:not(:disabled) {
+    background-color: #157347;
+    border-color: #146c43;
+}
+
+/* Danger (Red - e.g., Delete, Close Preview) */
+.button-danger {
+    background-color: #dc3545; /* Bootstrap red */
+    border-color: #dc3545;
+    color: white;
+}
+.button-danger:hover:not(:disabled) {
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+}
+
+/* Icon buttons (Edit, Delete, JSON Preview in list) - Size Reduced, White BG, Refined */
+.button.button-icon {
+  padding: 4px 8px; 
+  font-size: 0.85em; 
+  line-height: 1.2; 
+  min-width: 60px; 
+  font-weight: 500; /* Keep slightly bolder text */
+  border-width: 1px; 
+  background-color: #ffffff; 
+  border-style: solid; /* Ensure border style is solid */
+  transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out; /* Smoother transition */
+}
+
+/* Grey text/border */
+.button.button-icon[title*="JSON"] { 
+  border-color: #6c757d; 
+  color: #6c757d; 
+}
+.button.button-icon[title*="JSON"]:hover:not(:disabled) { 
+  /* background-color: #f8f9fa; Remove background change */
+  border-color: #52585d; /* Darker grey */ 
+  color: #52585d; /* Darker grey */
+}
+
+/* Yellow text/border */
+.button.button-icon[title*="Edit"] { 
+  border-color: #ffc107; 
+  color: #b38600; 
+}
+.button.button-icon[title*="Edit"]:hover:not(:disabled) { 
+  /* background-color: #fff9e6; Remove background change */
+  border-color: #cc9a06; /* Darker yellow */
+  color: #cc9a06; /* Darker yellow */
+}
+
+/* Red text/border */
+.button.button-icon[title*="Delete"] { 
+  border-color: #dc3545; 
+  color: #dc3545; 
+}
+.button.button-icon[title*="Delete"]:hover:not(:disabled) { 
+  /* background-color: #fbeeed; Remove background change */
+  border-color: #a51e2c; /* Darker red */ 
+  color: #a51e2c; /* Darker red */
+}
+
+/* Close button in JSON Preview area */
+.button.button-icon[title*="Close"] { 
+  background-color: #ffffff; 
+  border-color: #d9534f; 
+  color: #d9534f; 
+  padding: 3px 6px; 
+  font-size: 0.8em; 
+  border-style: solid;
+  transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.button.button-icon[title*="Close"]:hover:not(:disabled) {
+    /* background-color: #fdf0f0; Remove background change */
+    border-color: #a93e3a; /* Darker red */
+    color: #a93e3a; /* Darker red */
+}
+
+/* --- Scene List --- */
+.scene-list-container {
+  margin-top: 30px;
+}
+
+.scene-list-header {
+  margin-bottom: 15px;
+  font-size: 1.4em;
+  color: #343a40;
+  font-weight: 600;
+}
+
+.scene-list-droppable {
+  /* No extra styles needed */
+}
+
+.scene-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 10px; /* Increased margin */
+  border: 1px solid #dee2e6; /* Lighter border */
+  border-radius: 5px; /* Slightly more rounded */
+  background-color: #ffffff;
+  gap: 20px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.scene-item:hover {
+    border-color: #adb5bd;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.scene-item.selected {
+  border-color: #0d6efd; /* Match primary button */
+  border-width: 2px;
+  padding: 9px 14px;
+}
+
+.scene-item.dragging {
+  background-color: #cfe2ff; /* Lighter blue when dragging */
+  border-color: #9ec5fe;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.scene-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Tighter gap between lines */
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.scene-info-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px 10px; /* Tighter gaps within rows */
+}
+
+.top-row > span:first-child { /* Index/Type */
+  font-weight: 600; /* Bolder */
+  color: #212529; /* Darker */
+  margin-right: 5px; /* Space before path */
+}
+
+.top-row .scene-path { /* Path */
+  font-style: normal; /* Remove italic */
+  color: #6c757d;
+  font-size: 0.95em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  min-width: 50px;
+}
+
+.bottom-row .scene-detail { /* Details */
+  font-size: 0.8em; /* Smaller */
+  color: #495057;
+  white-space: nowrap;
+  padding: 2px 5px;
+  border: 1px solid #e9ecef; /* Very light border */
+  border-radius: 3px;
+  background-color: #f8f9fa; /* Match body background */
+}
+
+.bottom-row .scene-detail-path {
+  font-style: normal;
+  color: #6c757d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  min-width: 50px;
+  max-width: 200px; /* Shorter max width */
+  border: none;
+  padding: 2px 0;
+  background-color: transparent;
+}
+
+.scene-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Tighter button gap */
+  flex-shrink: 0;
+}
+
+/* Container for the inline edit form */
+.edit-form-inline-container {
+  margin-left: 20px; 
+  margin-right: 20px;
+  margin-bottom: 10px; 
+}
+
+/* Container for the inline JSON preview */
+.json-preview-inline-container {
+  margin: 5px 20px 15px 20px; /* Top, R/L, Bottom margin */
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+}
+
+.json-preview-inline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.json-preview-inline-header h4 {
+    margin: 0;
+    font-size: 1em;
+    color: #495057;
+    font-weight: 500;
+}
+
+/* Use existing .json-preview-content, maybe adjust slightly */
+.json-preview-inline-content {
+    max-height: 200px; /* Limit height for inline view */
+    font-size: 0.8em; /* Even smaller font for inline */
+    padding: 10px;
+}
+
+/* --- Text Overlay Sections (within forms) --- */
+.text-overlay-section {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.text-overlay-section h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #6c757d; /* Grey heading */
+    font-size: 1.1em;
+    font-weight: 500;
+}
+/* ... (Keep existing text overlay item, button styles - they might need minor tweaks later) ... */
+.text-overlay-item {
+    border: 1px solid #e9ecef;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.text-overlay-form {
+    border: 1px dashed #ced4da;
+    padding: 15px;
+    margin: 15px 0;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+/* --- JSON Previews --- */
+/* Individual Scene JSON Preview */
+.json-preview-area {
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+}
+.json-preview-area h4 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #495057;
+}
+.json-preview-content {
+  background-color: #e9ecef; /* Lighter background */
+  color: #212529; /* Darker text */
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  max-height: 250px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: monospace;
+  font-size: 0.85em; /* Smaller font */
+  border-radius: 4px;
+}
+
+/* Full JSON Modal */
+.json-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(33, 37, 41, 0.7); /* Darker overlay */
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1100; 
+}
+.json-modal-content {
+  background-color: #fff;
+  padding: 0; 
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 90%; /* Wider modal */
+  max-width: 1000px;
+  max-height: 90vh;
+  display: flex; flex-direction: column; 
+  overflow: hidden; 
+}
+.json-modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 25px;
+  border-bottom: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+}
+.json-modal-header h2 {
+  margin: 0; font-size: 1.5em; color: #343a40; font-weight: 600;
+}
+.json-modal-close-button {
+  background: none; border: none; font-size: 1.8rem;
+  cursor: pointer; color: #6c757d; line-height: 1; padding: 0;
+}
+.json-modal-close-button:hover { color: #343a40; }
+
+.json-modal-body {
+  padding: 0; /* Remove body padding, handle in pre */
+  overflow-y: auto; 
+  flex-grow: 1; 
+}
+.json-modal-pre {
+  background-color: #212529; /* Dark background */
+  color: #ced4da; /* Lighter grey text */
+  border: none; /* Remove border */
+  padding: 20px 25px;
+  border-radius: 0; /* No radius inside */
+  white-space: pre-wrap; 
+  word-break: break-all;
+  font-family: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.9em;
+  margin: 0; 
+  height: 100%; /* Fill body */
+}
+.json-modal-footer {
+  padding: 15px 25px;
+  border-top: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  text-align: right;
+}
+
+/* Adjust Toastify styles */
+.Toastify__toast {
+    border-radius: 4px !important;
+} 

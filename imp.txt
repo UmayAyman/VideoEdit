@@ -1,0 +1,43 @@
+http://localhost:5000/api/templates/template_1745853149106.json
+http://localhost:5000/api/templates
+
+picture or video
+assets/cartoon.jpg
+
+import React from 'react';
+import SceneCard from './SceneCard';
+import { Droppable } from '@hello-pangea/dnd'; 
+
+function SceneList({ scenes, onDelete, onEdit, onSelect, selectedIndex }) { // Add onSelect, selectedIndex
+  // ... no scenes check ...
+
+  return (
+    <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '20px' }}>
+      <h2>Scenes</h2>
+      <Droppable droppableId="sceneList"> 
+        {(provided) => (
+          <div 
+            ref={provided.innerRef} 
+            {...provided.droppableProps} 
+            style={{ /* ... */ }}
+          >
+            {scenes.map((scene, index) => (
+              <SceneCard 
+                key={scene.path || index} 
+                scene={scene} 
+                index={index} 
+                onDelete={onDelete} 
+                onEdit={onEdit} 
+                onSelect={onSelect} // Pass down onSelect
+                isSelected={index === selectedIndex} // Pass down isSelected flag
+              />
+            ))}
+            {provided.placeholder} 
+          </div>
+        )}
+      </Droppable>
+    </div>
+  );
+}
+
+export default SceneList;

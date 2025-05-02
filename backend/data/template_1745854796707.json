@@ -1,0 +1,109 @@
+{
+  "resolution": "1920x1080",
+  "audio": "assets/audio.mp3",
+  "scenes": [
+    {
+      "type": "video",
+      "edit": false,
+      "path": "assets/video1.mp4",
+      "duration": 15,
+      "transition": "circleclose",
+      "effect": {
+        "type": "colorchannelmixer",
+        "settings": {
+          "rr": 1,
+          "gg": 0.3,
+          "bb": 0.2
+        }
+      }
+    },
+    {
+      "type": "image",
+      "edit": true,
+      "path": "assets/pic.jpg",
+      "duration": 10,
+      "transition": "circleclose",
+      "text": [
+        {
+          "start": 1,
+          "end": 3,
+          "content": "Welcome Scene 1",
+          "fontSize": 100,
+          "color": "#FFFFFF",
+          "xPosition": 10,
+          "yPosition": 20,
+          "boxColor": "#000000",
+          "boxOpacity": "0.0",
+          "boxPadding": 0,
+          "edit": true
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "edit": true,
+      "path": "assets/video2.mp4",
+      "duration": 12,
+      "effect": {
+        "type": "colorchannelmixer",
+        "settings": {
+          "rr": 0.2,
+          "gg": 0.1,
+          "bb": 0.2
+        }
+      },
+      "text": [
+        {
+          "start": 5,
+          "end": 8,
+          "content": "This is Video Scene 3",
+          "fontSize": 30,
+          "color": "#FF0000",
+          "xPosition": 100,
+          "yPosition": 100,
+          "boxColor": "#000000",
+          "boxOpacity": "0.5",
+          "boxPadding": 5,
+          "edit": true
+        },
+        {
+          "start": 8,
+          "end": 11,
+          "content": "Second Text Overlay",
+          "fontSize": 25,
+          "color": "#0000FF",
+          "xPosition": 120,
+          "yPosition": 100,
+          "boxColor": "#000000",
+          "boxOpacity": "0.5",
+          "boxPadding": 5,
+          "edit": false
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "edit": false,
+      "path": "assets/video3.mp4",
+      "duration": 17,
+      "transition": "wipeleft",
+      "effect": {
+        "type": "colorchannelmixer",
+        "settings": {
+          "rr": 0.2,
+          "gg": 0.1,
+          "bb": 0.1
+        }
+      }
+    },
+    {
+      "type": "video",
+      "edit": true,
+      "path": "assets/video4.mp4",
+      "duration": 10,
+      "transition": "fade",
+      "effect": null,
+      "text": []
+    }
+  ]
+}
