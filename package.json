@@ -15,5 +15,8 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "engines": {
+    "node": "22.x"
+  }
 }
