@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS
 import './App.css'; // Import the CSS file
 import AddSceneForm from './components/AddSceneForm'; // Import the form
+import FileUpload from "./components/FileUpload";
 import JsonPreviewModal from './components/JsonPreviewModal'; // Import the new modal
 import SceneList from './components/SceneList'; // Import the SceneList component
 import TemplateSelector from './components/TemplateSelector'; // Import selector
@@ -349,6 +350,7 @@ function App() {
                         </button>
                     </div>
 
+
                     {isLoadingList && <p className="loading-message">Loading template list...</p>}
                     {isLoadingContent && <p className="loading-message">Loading template content...</p>}
 
@@ -404,7 +406,6 @@ function App() {
                                             </div>
                                         )}
                                     </div>
-
                                     {/* Buttons: Save, Add Scene, Generate JSON */}
                                     <div className="main-action-buttons">
                                         <button onClick={handleSave} className="button button-save" disabled={isLoadingContent}>
@@ -453,6 +454,9 @@ function App() {
                             </DragDropContext>
                         </div>
                     )}
+
+<FileUpload />
+
 
                     {!isTemplateLoaded && !isLoadingList && !isLoadingContent && (
                         <p className="placeholder-text">Select a template above to start editing, or save your work to create a new one.</p>

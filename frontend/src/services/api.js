@@ -84,7 +84,7 @@ export const updateTemplate = async (filename, templateData) => {
 export const uploadFile = async (file, onUploadProgress) => {
   const formData = new FormData();
   // 'mediaFile' must match the field name expected by multer on the backend
-  formData.append('mediaFile', file); 
+  formData.append('file', file); 
 
   try {
     const response = await axios.post(`${API_URL}/upload`, formData, {

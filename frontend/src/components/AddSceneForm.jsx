@@ -23,6 +23,7 @@ function AddSceneForm({ onAddScene, onCancel }) {
         setUploadProgress(0);
         setUploadedFilename(file.name); // Show original filename while uploading
         setPath(''); // Clear previous path
+        
 
         try {
             const result = await uploadFile(file, (progress) => {
@@ -43,6 +44,7 @@ function AddSceneForm({ onAddScene, onCancel }) {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent default form submission
+        console.log('DEBUG: Current path:', path);
         if (!path) { // Check if path is set (meaning upload was successful)
             alert('Please upload a file for the scene first.');
             return;
@@ -127,7 +129,7 @@ function AddSceneForm({ onAddScene, onCancel }) {
 
                 <div className="button-group" style={{marginTop: '15px'}}>
                     {/* Disable Add button if no path is set or if uploading */}
-                    <button type="submit" className="button button-save" disabled={!path || isUploading}>
+                    <button type="submit" className="button button-save" disabled={isUploading}>
                         Add Scene
                     </button>
                     <button type="button" onClick={onCancel} className="button button-secondary" disabled={isUploading}>

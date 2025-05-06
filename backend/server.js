@@ -1,28 +1,37 @@
+// server.js
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const templateRoutes = require('./routes/templateRoutes');
-const uploadRoutes = require('./routes/uploadRoutes'); // Import upload routes
+const uploadRoute = require('./routes/uploadRoutes');
 
-// Create the Express app
 const app = express();
 
 // Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing for requests from frontend
-app.use(express.json()); // Enable parsing of JSON request bodies
+app.use(cors());
+app.use(express.json());
 
-// Serve uploaded files statically
+// Serve uploaded files (local fallback if needed)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// API Routes
-app.use('/api/templates', templateRoutes); // Mount template routes under /api/templates
-app.use('/api/upload', uploadRoutes); // Mount upload routes
+// Routes
+app.use('/api/templates', templateRoutes);
+app.use('/api/upload', uploadRoute);
 
-// Define the port
-const PORT = process.env.PORT || 5000; // Use environment variable or default to 5000
+// Error handling (for Multer)
+const multer = require('multer');
+app.use((err, req, res, next) => {
+    if (err instanceof multer.MulterError) {
+        console.error("Multer Error:", err);
+        return res.status(400).json({ message: err.message });
+    }
+    next(err);
+});
 
-// Start the server
+// Start server
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Backend server running on http://localhost:${PORT}`);
-    console.log(`Serving uploads from: ${path.join(__dirname, 'uploads')}`); // Log upload dir
 });
+
