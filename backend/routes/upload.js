@@ -9,7 +9,8 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: 'video-edit',
-        allowed_formats: ['jpg', 'png', 'mp4', 'pdf'],
+        resource_type: 'auto',
+        allowed_formats: ['jpg', 'png', 'mp4', 'pdf', 'ogg', 'mp3'],
     },
 });
 
@@ -20,11 +21,12 @@ router.post('/upload', upload.single('file'), (req, res) => {
         return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    const filePath = req.file.path.replace(/\\/g, '/'); // Normalize Windows paths
+    // const filePath = req.file.path.replace(/\\/g, '/'); // Normalize Windows paths
 
     res.status(200).json({
         message: 'File uploaded successfully',
-        filePath:filePath,  // ← Use the normalized path here
+        // filePath: 'uploads/' + req.file.filename,  // ← Use the normalized path here
+        url: req.file.path,
     });
 });
 

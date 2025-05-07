@@ -95,31 +95,59 @@ router.put('/:filename', (req, res) => {
 });
 
 // POST /api/templates
-router.post('/', upload.single('file'), (req, res) => {
-  res.status(200).json({
-    url: req.file.path,
-    public_id: req.file.filename,
-  });
+// router.post('/', upload.single('file'), (req, res) => {
+//   res.status(200).json({
+//     url: req.file.path,
+//     public_id: req.file.filename,
+//   });
 
-  res.json({ url: req.file.path });
-  // 1. Get the template JSON data from the request body (req.body)
+//   res.json({ url: req.file.path });
+//   // 1. Get the template JSON data from the request body (req.body)
+//   const templateData = req.body;
+
+//   // 2. Validate the data (important!) - Check if it has the required fields/structure.
+
+//   // 3. Generate a unique filename (e.g., using timestamp or a UUID library)
+//   const filename = `template_${Date.now()}.json`;
+//   const filepath = path.join(dataDir, filename); // Use path.join for cross-platform compatibility
+
+//   // 4. Use Node's built-in 'fs' module to write the file
+//   fs.writeFile(filepath, JSON.stringify(templateData, null, 2), (err) => { // Use null, 2 for pretty printing
+//     if (err) {
+//       console.error('Error saving new template:', err);
+//       return res.status(500).json({ message: 'Failed to save new template' });
+//     }
+//     console.log(`Template saved to ${filename}`);
+//     res.status(201).json({ message: 'Template saved successfully', filename: filename });
+//   });
+// });
+
+// POST /api/templates — Save template only (no file)
+// POST /api/templates — Save a new template (JSON only)
+router.post('/', (req, res) => {
   const templateData = req.body;
 
-  // 2. Validate the data (important!) - Check if it has the required fields/structure.
+  // Basic validation
+  if (!templateData || typeof templateData !== 'object') {
+    return res.status(400).json({ message: 'Invalid template data provided' });
+  }
 
-  // 3. Generate a unique filename (e.g., using timestamp or a UUID library)
+  // Generate a unique filename
   const filename = `template_${Date.now()}.json`;
-  const filepath = path.join(dataDir, filename); // Use path.join for cross-platform compatibility
+  const filepath = path.join(dataDir, filename);
 
-  // 4. Use Node's built-in 'fs' module to write the file
-  fs.writeFile(filepath, JSON.stringify(templateData, null, 2), (err) => { // Use null, 2 for pretty printing
+  // Save the JSON to disk
+  fs.writeFile(filepath, JSON.stringify(templateData, null, 2), (err) => {
     if (err) {
       console.error('Error saving new template:', err);
       return res.status(500).json({ message: 'Failed to save new template' });
     }
+
     console.log(`Template saved to ${filename}`);
-    res.status(201).json({ message: 'Template saved successfully', filename: filename });
+    res.status(201).json({ message: 'Template saved successfully', filename });
   });
 });
+
+
 
 module.exports = router;

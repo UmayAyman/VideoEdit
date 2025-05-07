@@ -1,5 +1,14 @@
 {
   "resolution": "1920x1080",
-  "audio": "",
-  "scenes": []
+  "scenes": [
+    {
+      "type": "image",
+      "edit": true,
+      "path": "https://res.cloudinary.com/dtgkoliqd/image/upload/v1746609333/video-edit/ogjcdwafdwwxid6cdbgo.png",
+      "duration": 10,
+      "transition": "fade",
+      "effect": null,
+      "text": []
+    }
+  ]
 }

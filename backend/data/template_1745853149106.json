@@ -118,6 +118,15 @@
       "type": "image",
       "edit": true,
       "path": "assets/cartoon.jpg",
+      "duration": 12,
+      "transition": "fade",
+      "effect": null,
+      "text": []
+    },
+    {
+      "type": "image",
+      "edit": true,
+      "path": "https://res.cloudinary.com/dtgkoliqd/image/upload/v1746609299/video-edit/de43mghxsyttmjigpxj6.png",
       "duration": 10,
       "transition": "fade",
       "effect": null,

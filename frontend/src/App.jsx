@@ -157,6 +157,10 @@ function App() {
         toast.success('New scene added successfully!');
     };
 
+    <button onClick={handleSave} style={{ marginTop: '20px', padding: '10px 20px' }}>
+        Save Template to Backend
+    </button>
+
     // Function to cancel adding a scene
     const handleCancelAdd = () => {
         setIsAddingScene(false);
@@ -455,7 +459,7 @@ function App() {
                         </div>
                     )}
 
-<FileUpload />
+                    <FileUpload />
 
 
                     {!isTemplateLoaded && !isLoadingList && !isLoadingContent && (

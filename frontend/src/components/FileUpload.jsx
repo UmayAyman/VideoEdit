@@ -1,48 +1,4 @@
 
-
-// import React, { useState } from "react";
-
-// const FileUpload = () => {
-//     const [selectedFile, setSelectedFile] = useState(null);
-//     const [uploadedUrl, setUploadedUrl] = useState("");
-
-//     const handleFileChange = (e) => {
-//         setSelectedFile(e.target.files[0]);
-//     };
-
-//     const handleUpload = async (e) => {
-//         e.preventDefault(); // Prevent form submission if inside a form
-//         const formData = new FormData();
-//         formData.append("file", selectedFile);
-
-//         const res = await fetch("http://localhost:5000/api/upload", {
-//             method: "POST",
-//             body: formData,
-//         });
-
-//         const data = await res.json();
-//         console.log("Cloudinary URL:", data.url);
-//         setUploadedUrl(data.url); // Set the uploaded URL to state
-//     };
-
-//     return (
-//         <div className="p-4">
-//             <input type="file" onChange={handleFileChange} />
-//             <button onClick={handleUpload}>Upload</button>
-
-//             {uploadedUrl && (
-//                 <div className="mt-4">
-//                     <p>Uploaded File URL:</p>
-//                     <a href={uploadedUrl} target="_blank" rel="noopener noreferrer">
-//                         {uploadedUrl}
-//                     </a>
-//                 </div>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default FileUpload;
 import React, { useState } from "react";
 
 const FileUpload = () => {
@@ -72,7 +28,7 @@ const FileUpload = () => {
     return (
         <div className="file-upload-container">
             <h2 style = {{fontSize: '18px'}}>Upload File</h2>
-            <input type="file" onChange={handleFileChange} />
+            <input type="file" name = "file"onChange={handleFileChange} />
             <button onClick={handleUpload} disabled={!selectedFile}>Upload</button>
 
             {uploadedUrl && (

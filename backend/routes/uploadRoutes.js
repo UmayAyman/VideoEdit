@@ -10,7 +10,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
     folder: 'video-edit', // You can change this to any folder name you want
-    allowed_formats: ['jpg', 'jpeg', 'png', 'mp4', 'pdf'],
+    allowed_formats: ['jpg', 'jpeg', 'png', 'mp4', 'pdf', 'ogg', 'mp3'],
     resource_type: 'auto', // Allows both image and video
   },
 });
