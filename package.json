@@ -19,10 +19,6 @@
   "engines": {
     "node": "22.x"
   },
-  "scripts": {
-    "build": "vite build"
-  },
-  
   "dependencies": {
     "cloudinary": "^1.41.3",
     "dotenv": "^16.5.0",
