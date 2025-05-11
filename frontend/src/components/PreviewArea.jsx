@@ -141,7 +141,7 @@ function PreviewArea({ selectedScene, selectedIndex }) {
         <p><strong>Path:</strong> {selectedScene.path}</p>
         <p><strong>Duration:</strong> {selectedScene.duration}s</p>
         <p><strong>Transition:</strong> {selectedScene.transition || 'N/A'}</p>
-        <p><strong>Effect:</strong> {selectedScene.effect?.type || 'None'}</p>
+        <p><strong>Filter:</strong> {selectedScene.effect?.type || 'None'}</p>
         <p><strong>Text Overlays:</strong> {selectedScene.text?.length || 0}</p>
       </div>
       

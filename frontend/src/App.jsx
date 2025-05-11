@@ -71,6 +71,12 @@ function App() {
             return;
         }
 
+        // Validate resolution before saving
+        if (!templateData.resolution || !templateData.resolution.trim()) {
+            toast.error("Resolution is required and cannot be empty.");
+            return;
+        }
+
         let savePromise;
         let actionVerb = 'Saving';
 
@@ -157,10 +163,6 @@ function App() {
         toast.success('New scene added successfully!');
     };
 
-    <button onClick={handleSave} style={{ marginTop: '20px', padding: '10px 20px' }}>
-        Save Template to Backend
-    </button>
-
     // Function to cancel adding a scene
     const handleCancelAdd = () => {
         setIsAddingScene(false);
@@ -175,6 +177,7 @@ function App() {
 
     // Update the scene in the state array
     const handleUpdateScene = (indexToUpdate, updatedSceneData) => {
+        console.log('[App.jsx] handleUpdateScene CALLED. index:', indexToUpdate, 'data:', updatedSceneData); // LOG A
         if (!templateData) return;
         setTemplateData(prevData => ({
             ...prevData,
@@ -188,6 +191,7 @@ function App() {
 
     // Cancel editing
     const handleCancelEdit = () => {
+        console.log('[App.jsx] handleCancelEdit CALLED.'); // LOG B
         setEditingSceneIndex(null);
     };
 
@@ -368,33 +372,31 @@ function App() {
                                     {/* Top Level Property Inputs */}
                                     <div className="top-level-inputs">
                                         <div className="input-group">
-                                            <label htmlFor="resolutionInput">Resolution:</label>
+                                            <label htmlFor="templateResolution">Resolution:</label>
                                             <input
                                                 type="text"
-                                                id="resolutionInput"
+                                                id="templateResolution"
                                                 value={templateData.resolution || ''}
                                                 onChange={handleResolutionChange}
                                                 placeholder="e.g., 1920x1080"
-                                                disabled={isLoadingContent}
+                                                disabled={isLoadingContent || !isTemplateLoaded}
+                                                required
                                             />
                                         </div>
                                         <div className="input-group">
-                                            <label htmlFor="audioInput">Audio File:</label>
+                                            <label htmlFor="templateAudio">Background Audio:</label>
                                             <input
                                                 type="file"
-                                                id="audioInput"
-                                                accept="audio/*"
+                                                id="templateAudio"
                                                 onChange={handleAudioFileChange}
-                                                disabled={isLoadingContent || isAudioUploading}
+                                                accept="audio/*"
+                                                disabled={isLoadingContent || !isTemplateLoaded || audioUploadStatus === 'uploading'}
                                             />
-                                            {templateData.audio && !isAudioUploading && (
+                                            {templateData?.audio && audioUploadStatus !== 'uploading' && (
                                                 <span style={{ marginLeft: '10px', fontSize: '0.9em', color: '#555' }}>Current: {templateData.audio}</span>
                                             )}
-                                            {isAudioUploading && (
+                                            {audioUploadStatus === 'uploading' && (
                                                 <span style={{ marginLeft: '10px', fontSize: '0.9em' }}>Uploading ({audioUploadProgress}%)...</span>
-                                            )}
-                                            {audioUploadStatus === 'error' && (
-                                                <span style={{ marginLeft: '10px', fontSize: '0.9em', color: 'red' }}>Upload failed!</span>
                                             )}
                                         </div>
                                         {/* Show Cancel New Template button if applicable, MOVED here */}
@@ -412,19 +414,19 @@ function App() {
                                     </div>
                                     {/* Buttons: Save, Add Scene, Generate JSON */}
                                     <div className="main-action-buttons">
-                                        <button onClick={handleSave} className="button button-save" disabled={isLoadingContent}>
+                                        <button onClick={handleSave} className="button button-save" disabled={!isTemplateLoaded || isLoadingContent}>
                                             {loadedTemplateFile ? 'Update Template' : 'Save New Template'}
                                         </button>
 
                                         {!isAddingScene && editingSceneIndex === null && (
-                                            <button onClick={() => setIsAddingScene(true)} className="button button-primary" disabled={isLoadingContent}>
+                                            <button onClick={() => setIsAddingScene(true)} className="button button-primary" disabled={!isTemplateLoaded || isLoadingContent}>
                                                 Add New Scene
                                             </button>
                                         )}
                                         <button
                                             onClick={handleOpenJsonModal}
                                             className="button button-secondary"
-                                            disabled={!isTemplateLoaded}
+                                            disabled={!isTemplateLoaded || isLoadingContent}
                                             title="Show the complete JSON for the current template"
                                         >
                                             Generate Full JSON

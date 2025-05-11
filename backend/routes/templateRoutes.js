@@ -131,6 +131,7 @@ router.post('/', (req, res) => {
   if (!templateData || typeof templateData !== 'object') {
     return res.status(400).json({ message: 'Invalid template data provided' });
   }
+  
 
   // Generate a unique filename
   const filename = `template_${Date.now()}.json`;

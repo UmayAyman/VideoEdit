@@ -105,7 +105,7 @@ function SceneCard({ scene, index, onDelete, onEdit, onSelect, isSelected }) {
           <p><strong>Path:</strong> {scene.path}</p>
           <p><strong>Duration:</strong> {scene.duration}s</p>
           <p><strong>Transition:</strong> {scene.transition || 'N/A'}</p>
-          <p><strong>Effect:</strong> {scene.effect?.type || 'None'}</p>
+          <p><strong>Filter:</strong> {scene.effect?.type || 'None'}</p>
           <p><strong>Text Overlays:</strong> {scene.text?.length || 0}</p>
           <p><strong>Editable:</strong> {scene.edit ? 'Yes' : 'No'}</p>
           {/* We can add more details and edit buttons later */}

@@ -7,7 +7,7 @@
       "path": "https://res.cloudinary.com/dtgkoliqd/image/upload/v1746609333/video-edit/ogjcdwafdwwxid6cdbgo.png",
       "duration": 10,
       "transition": "circleclose",
-      "effect": null,
+      "filter": null,
       "text": []
     },
     {
@@ -16,7 +16,7 @@
       "path": "https://res.cloudinary.com/dtgkoliqd/image/upload/v1746611283/video-edit/vnzfwjgw1ckvmnkmq4ny.png",
       "duration": 10,
       "transition": "fade",
-      "effect": null,
+      "filter": null,
       "text": []
     }
   ]

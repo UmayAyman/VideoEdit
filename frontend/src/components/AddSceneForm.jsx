@@ -58,7 +58,7 @@ function AddSceneForm({ onAddScene, onCancel }) {
             duration: parseInt(duration, 10) || 10, // Ensure duration is a number
             // Add default empty arrays/objects for other properties if needed
             transition: 'fade', // Default transition
-            effect: null,
+            filter: null,
             text: []
         };
 

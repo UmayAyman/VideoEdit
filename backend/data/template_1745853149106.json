@@ -8,7 +8,7 @@
       "path": "assets/video1.mp4",
       "duration": 15,
       "transition": "circleclose",
-      "effect": {
+      "filter": {
         "type": "colorchannelmixer",
         "settings": {
           "rr": 1,
@@ -44,14 +44,6 @@
       "edit": true,
       "path": "assets/video2.mp4",
       "duration": 12,
-      "effect": {
-        "type": "colorchannelmixer",
-        "settings": {
-          "rr": 0.2,
-          "gg": 0.1,
-          "bb": 0.2
-        }
-      },
       "text": [
         {
           "start": 5,
@@ -79,7 +71,15 @@
           "boxPadding": 5,
           "edit": false
         }
-      ]
+      ],
+      "filter": {
+        "type": "colorchannelmixer",
+        "settings": {
+          "rr": 0.2,
+          "gg": 0.1,
+          "bb": 0.2
+        }
+      }
     },
     {
       "type": "video",
@@ -87,7 +87,7 @@
       "path": "assets/video3.mp4",
       "duration": 17,
       "transition": "wipeleft",
-      "effect": {
+      "filter": {
         "type": "colorchannelmixer",
         "settings": {
           "rr": 0.2,
@@ -102,7 +102,7 @@
       "path": "frontend\\public\\assets\\applewatch.webp",
       "duration": 5,
       "transition": "fade",
-      "effect": null,
+      "filter": null,
       "text": []
     },
     {
@@ -111,7 +111,7 @@
       "path": "D:\\videoTemplates\\frontend\\public\\assets\\applewatch.webp",
       "duration": 10,
       "transition": "fade",
-      "effect": null,
+      "filter": null,
       "text": []
     },
     {
@@ -120,7 +120,7 @@
       "path": "assets/cartoon.jpg",
       "duration": 12,
       "transition": "fade",
-      "effect": null,
+      "filter": null,
       "text": []
     },
     {
@@ -129,8 +129,57 @@
       "path": "https://res.cloudinary.com/dtgkoliqd/image/upload/v1746609299/video-edit/de43mghxsyttmjigpxj6.png",
       "duration": 10,
       "transition": "fade",
-      "effect": null,
+      "filter": null,
       "text": []
+    },
+    {
+      "type": "image",
+      "edit": true,
+      "path": "https://res.cloudinary.com/dtgkoliqd/image/upload/v1746973294/video-edit/qmnwbdpozdux8zhezpce.png",
+      "duration": 10,
+      "transition": "fade",
+      "filter": null,
+      "text": []
+    },
+    {
+      "type": "image",
+      "edit": true,
+      "path": "https://res.cloudinary.com/dtgkoliqd/image/upload/v1746975246/video-edit/mbqhzgystuhw9tcs8wml.png",
+      "duration": 10,
+      "transition": "fade",
+      "filter": null,
+      "text": []
+    },
+    {
+      "type": "video",
+      "edit": true,
+      "path": "https://res.cloudinary.com/dtgkoliqd/image/upload/v1746985752/video-edit/jtzcryh2dgpopdhgfazr.png",
+      "duration": 10,
+      "transition": "fade",
+      "filter": {
+        "type": "colorchannelmixer",
+        "settings": {
+          "rr": 1,
+          "gg": 1,
+          "bb": 1
+        }
+      },
+      "text": [
+        {
+          "content": "scene 11",
+          "start": 0,
+          "end": 5,
+          "xPosition": 50,
+          "yPosition": 50,
+          "fontSize": 24,
+          "color": "#ffffff",
+          "edit": false,
+          "boxColor": "#000000",
+          "boxOpacity": 0.5,
+          "boxPadding": 5
+        }
+      ],
+      "overlays": []
     }
   ]
 }

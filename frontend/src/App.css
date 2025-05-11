@@ -464,39 +464,169 @@ body {
 
 /* Use existing .json-preview-content, maybe adjust slightly */
 .json-preview-inline-content {
-    max-height: 200px; /* Limit height for inline view */
-    font-size: 0.8em; /* Even smaller font for inline */
-    padding: 10px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 /* --- Text Overlay Sections (within forms) --- */
 .text-overlay-section {
-    margin-top: 25px;
-    border-top: 1px solid #eee;
+    margin-top: 20px;
     padding-top: 20px;
+    border-top: 1px dashed #ced4da;
 }
 .text-overlay-section h4 {
     margin-top: 0;
     margin-bottom: 15px;
-    color: #6c757d; /* Grey heading */
     font-size: 1.1em;
-    font-weight: 500;
+    color: #495057;
+    font-weight: 600;
 }
-/* ... (Keep existing text overlay item, button styles - they might need minor tweaks later) ... */
+
 .text-overlay-item {
-    border: 1px solid #e9ecef;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    position: relative;
-    background-color: #fff;
-    border-radius: 4px;
-}
-.text-overlay-form {
-    border: 1px dashed #ced4da;
+    border: 1px solid #dee2e6;
     padding: 15px;
-    margin: 15px 0;
-    background-color: #f8f9fa;
+    padding-top: 40px; /* Extra padding at the top to make space for buttons */
+    margin-bottom: 15px;
+    position: relative; /* For button positioning */
     border-radius: 4px;
+    background-color: #fff;
+}
+
+.text-overlay-item p {
+    margin: 0 0 8px 0;
+    font-size: 0.95em;
+}
+
+.text-overlay-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.text-overlay-button { /* Base style for text overlay Edit/Delete buttons */
+    padding: 5px 10px;
+    font-size: 0.8em;
+    font-weight: 500;
+    border: 1px solid #adb5bd; /* Light grey border */
+    background-color: #ffffff; /* White background */
+    color: #495057; /* Dark grey text */
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.text-overlay-button:hover:not(:disabled) {
+    background-color: #f8f9fa; /* Very light grey hover */
+    border-color: #6c757d;
+}
+
+/* .text-overlay-button.edit {} */ /* No specific style needed, inherits base */
+/* .text-overlay-button.delete {} */ /* No specific style needed, inherits base */
+
+.text-overlay-form {
+    border: 1px solid #e9ecef;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #f8f9fa; /* Light background for the form itself */
+}
+
+.text-overlay-form h4 {
+    margin-top:0;
+    margin-bottom: 15px;
+    font-size: 1.05em;
+}
+
+/* --- Image Overlay Sections (similar to Text Overlay) --- */
+.image-overlay-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #ced4da;
+}
+.image-overlay-section h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #495057;
+    font-weight: 600;
+}
+.image-overlay-item {
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    padding-top: 40px; /* Extra padding at the top to make space for buttons */
+    margin-bottom: 15px;
+    position: relative; /* For button positioning */
+    border-radius: 4px;
+    background-color: #fff;
+}
+.image-overlay-item p {
+    margin: 0 0 8px 0;
+    font-size: 0.95em;
+}
+.image-overlay-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+.image-overlay-button { /* Base for image overlay buttons, if any common style needed */
+    padding: 5px 10px;
+    font-size: 0.8em;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff; /* Default white text for colored buttons */
+    transition: opacity 0.2s ease;
+}
+.image-overlay-button:hover:not(:disabled) {
+    opacity: 0.85;
+}
+.image-overlay-button.edit {
+    background-color: #ffc107; /* Yellow */
+    border: 1px solid #ffc107;
+    color: #000; /* Black text for yellow button */
+}
+.image-overlay-button.delete {
+    background-color: #dc3545; /* Red */
+    border: 1px solid #dc3545;
+    color: #fff; /* White text for red button */
+}
+.button-add-image-overlay, .button-add-text { /* Styling for "Add New..." buttons */
+    background-color: #e9ecef; /* Lighter grey, distinct from primary/secondary */
+    border-color: #ced4da;
+    color: #212529; /* Darker text */
+    padding: 6px 12px;
+    font-size: 0.9em;
+    margin-top: 5px; /* Add a little space if items exist above */
+}
+.button-add-image-overlay:hover:not(:disabled),
+.button-add-text:hover:not(:disabled) {
+    background-color: #dee2e6;
+    border-color: #adb5bd;
+}
+.image-overlay-form {
+    border: 1px solid #e9ecef;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #f8f9fa; /* Light background for the form itself */
+}
+.image-overlay-form h4 {
+    margin-top:0;
+    margin-bottom: 15px;
+    font-size: 1.05em;
 }
 
 /* --- JSON Previews --- */
@@ -640,4 +770,26 @@ body {
   margin-top: 10px;
   font-size: 14px;
   color: #333;
+}
+
+.text-overlay-button { /* Base for text overlay buttons */
+  padding: 4px 8px;
+  font-size: 0.85em;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 3px;
+}
+.text-overlay-button:hover {
+  background-color: #e0e0e0;
+  border-color: #bbb;
+}
+
+.image-overlay-buttons button { /* Specifics if needed, otherwise inherits */
+  background-color: #f8f9fa; /* Very light grey hover */
+  border-color: #6c757d;
+}
+.text-overlay-button.delete { /* Specifics if needed, otherwise inherits */
+  background-color: #f8f9fa; /* Very light grey hover */
+  border-color: #6c757d;
 }

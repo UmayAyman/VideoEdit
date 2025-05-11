@@ -65,7 +65,7 @@ function SceneList({
                           <span className="scene-detail">Duration: {scene.duration}s</span>
                           {scene.transition && <span className="scene-detail">Transition: {scene.transition}</span>}
                           {/* Explicit Effect display */}
-                          <span className="scene-detail">Effect: {scene.effect?.type || 'None'}</span>
+                          <span className="scene-detail">Filter: {scene.effect?.type || 'None'}</span>
                           {/* Text Overlay Count */}
                           <span className="scene-detail">Text: {scene.text?.length || 0}</span>
                           {/* Editable Status */}
